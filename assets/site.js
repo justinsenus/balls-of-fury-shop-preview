@@ -60,18 +60,20 @@
     var morphs = morphList(product);
     var status = String(product.status || "available").toLowerCase();
     var statusLabel = status === "hold" ? "ON HOLD" : status === "sold" ? "SOLD" : "AVAILABLE";
-    var photo = product.photo ? '<img src="' + escapeHtml(product.photo) + '" alt="White-background photo of ' + escapeHtml(product.name) + '" loading="lazy">' :
-      '<div class="photo-needed"><span>ADD WHITE-BACKGROUND PHOTO</span></div>';
+    var photo = product.photo ? '<img src="' + escapeHtml(product.photo) + '" alt="Photo of ' + escapeHtml(product.name) + '" loading="lazy">' :
+      '<div class="photo-needed"><span>PHOTO COMING SOON</span></div>';
     var details = product.description ? '<p class="snake-description">' + escapeHtml(product.description) + "</p>" : "";
     var morphText = morphs.length ? morphs.join(" · ") : "Morph details pending";
     var askLabel = "Ask about " + String(product.name || "this snake") + " on Instagram";
+    var price = product.priceLabel ? '<strong class="snake-price snake-price-label">' + escapeHtml(product.priceLabel) + "</strong>" :
+      '<strong class="snake-price">' + formatPrice(product.price) + "</strong>";
     return '<article class="snake-card">' +
       '<div class="snake-photo">' + photo + '<span class="status-pill status-' + escapeHtml(status) + '"><i></i>' + statusLabel + "</span></div>" +
       '<div class="snake-card-body">' +
         '<div class="snake-title-row"><div><p class="eyebrow snake-label">BALL PYTHON</p><h3>' + escapeHtml(product.name || "Ball Python") + "</h3></div>" +
         '<span class="snake-sex">' + escapeHtml(product.sex || "—") + "</span></div>" +
         '<p class="snake-morphs">' + escapeHtml(morphText) + "</p>" + details +
-        '<div class="snake-card-bottom"><strong class="snake-price">' + formatPrice(product.price) + "</strong>" +
+        '<div class="snake-card-bottom">' + price +
         '<a class="button button-small button-outline" href="' + instagramUrl + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(askLabel) + '">ASK ABOUT IT <span aria-hidden="true">↗</span></a></div>' +
       "</div></article>";
   }
