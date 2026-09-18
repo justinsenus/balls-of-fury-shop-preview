@@ -38,3 +38,14 @@ Listing buttons link to the supplied Instagram profile so buyers can ask about a
 ## Social links
 
 The home page links to the supplied Instagram, YouTube and Facebook profiles. The YouTube uploads playlist is embedded; Instagram uses a supplied profile-grid screenshot and Facebook uses a direct-link card. The profile links remain available on each card.
+
+## Automatic Instagram and Facebook feed
+
+The home page includes a hidden Elfsight Social Feed mount. It stays hidden until a widget ID is configured, so the review site keeps its existing social cards until the feed is authorized.
+
+1. Have the account owner create one Elfsight Social Feed widget with the public Instagram profile and Facebook Page.
+2. The Instagram profile must be public. The owner signs in to Meta and authorizes the Facebook Page if prompted.
+3. Copy the ID from the Elfsight installation code's `elfsight-app-<ID>` class.
+4. Put that ID in `assets/social-feed-config.js` as `window.BOF_SOCIAL_FEED_WIDGET_ID`.
+
+Once configured, the homepage shows the combined live feed and hides the static Instagram and Facebook cards. The widget updates on its provider's refresh schedule; it is not an instant mirror. The owner should keep the widget account and review its plan limits before launch.

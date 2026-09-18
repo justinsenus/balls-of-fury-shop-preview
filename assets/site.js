@@ -9,6 +9,35 @@
     node.textContent = new Date().getFullYear();
   });
 
+  function mountSocialFeed() {
+    var widgetId = String(window.BOF_SOCIAL_FEED_WIDGET_ID || "").trim();
+    if (!/^[a-z0-9-]{8,}$/i.test(widgetId)) return;
+
+    var socialGrid = document.querySelector(".social-grid");
+    var feedCard = document.getElementById("social-feed-card");
+    var feedMount = document.getElementById("social-feed-mount");
+    if (!socialGrid || !feedCard || !feedMount) return;
+
+    var widget = document.createElement("div");
+    widget.className = "elfsight-app-" + widgetId;
+    widget.setAttribute("data-elfsight-app-lazy", "");
+    feedMount.appendChild(widget);
+
+    feedCard.hidden = false;
+    socialGrid.classList.add("has-live-social-feed");
+    socialGrid.querySelectorAll(".social-card-instagram, .social-card-facebook").forEach(function (card) {
+      card.hidden = true;
+    });
+
+    var platformScript = document.createElement("script");
+    platformScript.src = "https://static.elfsight.com/platform/platform.js";
+    platformScript.async = true;
+    platformScript.dataset.elfsightPlatform = "true";
+    document.head.appendChild(platformScript);
+  }
+
+  mountSocialFeed();
+
   var menuButton = document.querySelector(".menu-toggle");
   var nav = document.querySelector(".primary-nav");
   if (menuButton && nav) {

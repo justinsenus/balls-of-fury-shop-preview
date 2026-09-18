@@ -969,6 +969,16 @@ select:focus-visible {
   color: #6faaff;
 }
 
+.social-feed-icon {
+  background: rgba(22, 198, 215, 0.13);
+  color: var(--teal-bright);
+}
+
+.social-feed-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
 .social-card-top > .arrow-link {
   font-size: 18px;
 }
@@ -1083,6 +1093,24 @@ select:focus-visible {
   margin: 0 0 2px;
   color: #b5c2c5;
   font-size: 10px;
+}
+
+.social-card[hidden] {
+  display: none !important;
+}
+
+.social-card-live-feed {
+  grid-column: span 2;
+}
+
+.social-feed-mount {
+  min-height: 360px;
+  padding: 14px;
+  background: #091216;
+}
+
+.social-feed-mount > div {
+  min-height: 330px;
 }
 
 .instagram-preview-overlay {
@@ -1713,6 +1741,10 @@ select:focus-visible {
     grid-column: span 2;
   }
 
+  .social-card-live-feed {
+    grid-column: span 2;
+  }
+
 
   .about-layout {
     grid-template-columns: 1fr 1fr;
@@ -2006,6 +2038,19 @@ select:focus-visible {
 
   .social-card-facebook {
     grid-column: auto;
+  }
+
+  .social-card-live-feed {
+    grid-column: auto;
+  }
+
+  .social-feed-mount {
+    min-height: 400px;
+    padding: 10px;
+  }
+
+  .social-feed-mount > div {
+    min-height: 380px;
   }
 
   .social-card-top {
