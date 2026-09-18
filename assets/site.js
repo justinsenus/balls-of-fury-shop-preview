@@ -13,8 +13,8 @@
   if (heroVideo) {
     var reducedMotionQuery = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
     var startHeroVideo = function () {
-      heroVideo.defaultPlaybackRate = 0.7;
-      heroVideo.playbackRate = 0.7;
+      heroVideo.defaultPlaybackRate = 1;
+      heroVideo.playbackRate = 1;
       if (reducedMotionQuery && reducedMotionQuery.matches) {
         heroVideo.pause();
         return;
