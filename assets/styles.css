@@ -337,13 +337,15 @@ select:focus-visible {
 
 .home-hero .hero-video {
   object-position: center center;
+  object-fit: contain;
+  background: #050a0d;
   pointer-events: none;
 }
 
 .home-hero .hero-video > img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .hero-overlay {
@@ -1865,11 +1867,19 @@ select:focus-visible {
   }
 
   .home-hero {
-    min-height: 680px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
 
-  .home-hero .hero-image {
-    object-position: 12% center;
+  .home-hero .hero-video {
+    position: relative;
+    inset: auto;
+    z-index: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 910 / 512;
+    object-position: center;
   }
 
   .hero-overlay {
@@ -1879,13 +1889,14 @@ select:focus-visible {
   }
 
   .hero-inner {
-    align-items: flex-end;
-    padding-block: 60px 26px;
+    align-items: flex-start;
+    min-height: 0;
+    padding-block: 34px 30px;
   }
 
   .hero-copy {
     width: 100%;
-    padding-top: 150px;
+    padding-top: 0;
   }
 
   .eyebrow {
