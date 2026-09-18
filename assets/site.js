@@ -9,6 +9,28 @@
     node.textContent = new Date().getFullYear();
   });
 
+  var heroVideo = document.querySelector(".hero-video");
+  if (heroVideo) {
+    var reducedMotionQuery = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    var startHeroVideo = function () {
+      heroVideo.defaultPlaybackRate = 0.7;
+      heroVideo.playbackRate = 0.7;
+      if (reducedMotionQuery && reducedMotionQuery.matches) {
+        heroVideo.pause();
+        return;
+      }
+      var playRequest = heroVideo.play();
+      if (playRequest && typeof playRequest.catch === "function") {
+        playRequest.catch(function () {});
+      }
+    };
+    if (heroVideo.readyState >= 1) {
+      startHeroVideo();
+    } else {
+      heroVideo.addEventListener("loadedmetadata", startHeroVideo, { once: true });
+    }
+  }
+
   function mountSocialFeed() {
     var widgetId = String(window.BOF_SOCIAL_FEED_WIDGET_ID || "").trim();
     if (!/^[a-z0-9-]{8,}$/i.test(widgetId)) return;
